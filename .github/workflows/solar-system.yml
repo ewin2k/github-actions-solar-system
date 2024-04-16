@@ -72,11 +72,13 @@ jobs:
           retention-days: 5
         
     docker:
-      name: Containerization
-      needs: [ unit-testing, code-coverage ]
       permissions:
         packages: write
+      #name: Containerization
       runs-on: ubuntu-latest
+      needs: 
+        - unit-testing
+        - code-coverage
       steps:
         - name: Checkout Repo
           uses: actions/checkout@v4
